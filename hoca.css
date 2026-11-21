@@ -1,0 +1,549 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+/* Khung hồ cá chính */
+#content {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  transition: background 0.8s ease;
+}
+
+/* 4 cảnh nền đại dương chuyển đổi khi bấm nút */
+#content.bg-1 {
+  background:
+    radial-gradient(
+      circle at 50% 10%,
+      rgba(125, 226, 255, 0.45),
+      transparent 55%
+    ),
+    linear-gradient(180deg, #0ea5e9 0%, #0369a1 48%, #082f49 100%);
+}
+#content.bg-2 {
+  background:
+    radial-gradient(
+      circle at 75% 15%,
+      rgba(253, 224, 71, 0.4),
+      transparent 50%
+    ),
+    linear-gradient(180deg, #0284c7 0%, #0f766e 55%, #042f2e 100%);
+}
+#content.bg-3 {
+  background:
+    radial-gradient(
+      circle at 30% 12%,
+      rgba(244, 114, 182, 0.35),
+      transparent 50%
+    ),
+    linear-gradient(180deg, #f97316 0%, #be185d 35%, #1e1b4b 100%);
+}
+#content.bg-4 {
+  background:
+    radial-gradient(
+      circle at 60% 10%,
+      rgba(186, 230, 253, 0.25),
+      transparent 45%
+    ),
+    linear-gradient(180deg, #1e3a8a 0%, #0f172a 60%, #020617 100%);
+}
+
+/* Cụm nút điều khiển ở phía trên cùng bên phải màn hình */
+.controls {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 100;
+  display: flex;
+  gap: 10px;
+}
+
+.ctrl-btn {
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 20px;
+  background: rgba(15, 23, 42, 0.55);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition:
+    background 0.25s ease,
+    transform 0.15s ease;
+}
+
+.ctrl-btn:hover {
+  background: rgba(14, 165, 233, 0.85);
+  transform: translateY(-1px);
+}
+
+/* ================= BƯỚC 3 & 4: CÁ MẬP (THEO ĐÚNG SÁCH) ================= */
+#shark {
+  left: 100px;
+  top: 400px;
+  position: absolute;
+  z-index: 20;
+  animation-name: Shark;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+}
+
+#shark img {
+  width: 240px;
+  height: auto;
+}
+
+@keyframes Shark {
+  0% {
+    left: 100px;
+    top: 400px;
+    transform: scaleX(1);
+  }
+  20% {
+    left: 300px;
+    top: 400px;
+    transform: scaleX(1);
+  }
+  40% {
+    left: 550px;
+    top: 300px;
+    transform: scaleX(1);
+  }
+  50% {
+    left: 780px;
+    top: 120px;
+    transform: scaleX(1);
+  }
+  51% {
+    left: 780px;
+    top: 120px;
+    transform: scaleX(-1);
+  }
+  70% {
+    left: 500px;
+    top: 220px;
+    transform: scaleX(-1);
+  }
+  95% {
+    left: 100px;
+    top: 400px;
+    transform: scaleX(-1);
+  }
+  100% {
+    left: 100px;
+    top: 400px;
+    transform: scaleX(1);
+  }
+}
+
+/* ================= BƯỚC 5: CÁC ĐỐI TƯỢNG KHÁC (TỐC ĐỘ THỰC TẾ) ================= */
+
+/* Con rùa bơi chậm hơn cá mập (20s) */
+#turtle {
+  position: absolute;
+  left: 720px;
+  top: 150px;
+  z-index: 15;
+  animation-name: Turtle;
+  animation-duration: 20s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+}
+
+#turtle img {
+  width: 150px;
+  height: auto;
+}
+
+@keyframes Turtle {
+  0% {
+    left: 720px;
+    top: 150px;
+    transform: scaleX(-1);
+  }
+  25% {
+    left: 480px;
+    top: 190px;
+    transform: scaleX(-1);
+  }
+  49% {
+    left: 160px;
+    top: 140px;
+    transform: scaleX(-1);
+  }
+  50% {
+    left: 160px;
+    top: 140px;
+    transform: scaleX(1);
+  }
+  75% {
+    left: 450px;
+    top: 110px;
+    transform: scaleX(1);
+  }
+  99% {
+    left: 720px;
+    top: 150px;
+    transform: scaleX(1);
+  }
+  100% {
+    left: 720px;
+    top: 150px;
+    transform: scaleX(-1);
+  }
+}
+
+/* Thợ lặn 1 (22s) */
+#diver1 {
+  position: absolute;
+  left: 80px;
+  top: 120px;
+  z-index: 18;
+  animation-name: Diver1;
+  animation-duration: 22s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+}
+
+#diver1 img {
+  width: 150px;
+  height: auto;
+}
+
+@keyframes Diver1 {
+  0% {
+    left: 80px;
+    top: 120px;
+    transform: scaleX(1);
+  }
+  25% {
+    left: 320px;
+    top: 170px;
+    transform: scaleX(1);
+  }
+  49% {
+    left: 580px;
+    top: 110px;
+    transform: scaleX(1);
+  }
+  50% {
+    left: 580px;
+    top: 110px;
+    transform: scaleX(-1);
+  }
+  75% {
+    left: 310px;
+    top: 80px;
+    transform: scaleX(-1);
+  }
+  99% {
+    left: 80px;
+    top: 120px;
+    transform: scaleX(-1);
+  }
+  100% {
+    left: 80px;
+    top: 120px;
+    transform: scaleX(1);
+  }
+}
+
+/* Thợ lặn 2 (25s) */
+#diver2 {
+  position: absolute;
+  left: 650px;
+  top: 340px;
+  z-index: 17;
+  animation-name: Diver2;
+  animation-duration: 25s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+}
+
+#diver2 img {
+  width: 145px;
+  height: auto;
+}
+
+@keyframes Diver2 {
+  0% {
+    left: 650px;
+    top: 340px;
+    transform: scaleX(-1);
+  }
+  30% {
+    left: 400px;
+    top: 290px;
+    transform: scaleX(-1);
+  }
+  49% {
+    left: 180px;
+    top: 360px;
+    transform: scaleX(-1);
+  }
+  50% {
+    left: 180px;
+    top: 360px;
+    transform: scaleX(1);
+  }
+  80% {
+    left: 430px;
+    top: 410px;
+    transform: scaleX(1);
+  }
+  99% {
+    left: 650px;
+    top: 340px;
+    transform: scaleX(1);
+  }
+  100% {
+    left: 650px;
+    top: 340px;
+    transform: scaleX(-1);
+  }
+}
+
+/* Thợ lặn 3 (24s) */
+#diver3 {
+  position: absolute;
+  left: 380px;
+  top: 470px;
+  z-index: 16;
+  animation-name: Diver3;
+  animation-duration: 24s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+}
+
+#diver3 img {
+  width: 140px;
+  height: auto;
+}
+
+@keyframes Diver3 {
+  0% {
+    left: 380px;
+    top: 470px;
+    transform: scaleX(1);
+  }
+  25% {
+    left: 660px;
+    top: 430px;
+    transform: scaleX(1);
+  }
+  49% {
+    left: 820px;
+    top: 480px;
+    transform: scaleX(1);
+  }
+  50% {
+    left: 820px;
+    top: 480px;
+    transform: scaleX(-1);
+  }
+  75% {
+    left: 540px;
+    top: 510px;
+    transform: scaleX(-1);
+  }
+  99% {
+    left: 380px;
+    top: 470px;
+    transform: scaleX(-1);
+  }
+  100% {
+    left: 380px;
+    top: 470px;
+    transform: scaleX(1);
+  }
+}
+
+/* Đàn cá vàng (14s) */
+#goldfish {
+  position: absolute;
+  left: 50px;
+  top: 250px;
+  z-index: 12;
+  animation-name: GoldFish;
+  animation-duration: 14s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+}
+
+#goldfish img {
+  width: 170px;
+  height: auto;
+}
+
+@keyframes GoldFish {
+  0% {
+    left: 50px;
+    top: 250px;
+    transform: scaleX(1);
+  }
+  49% {
+    left: 760px;
+    top: 230px;
+    transform: scaleX(1);
+  }
+  50% {
+    left: 760px;
+    top: 230px;
+    transform: scaleX(-1);
+  }
+  99% {
+    left: 50px;
+    top: 250px;
+    transform: scaleX(-1);
+  }
+  100% {
+    left: 50px;
+    top: 250px;
+    transform: scaleX(1);
+  }
+}
+
+/* Đàn cá nhỏ xa xa (16s) */
+#faintschool {
+  position: absolute;
+  left: 780px;
+  top: 80px;
+  z-index: 10;
+  opacity: 0.85;
+  animation-name: FaintSchool;
+  animation-duration: 16s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+}
+
+#faintschool img {
+  width: 160px;
+  height: auto;
+}
+
+@keyframes FaintSchool {
+  0% {
+    left: 780px;
+    top: 80px;
+    transform: scaleX(-1);
+  }
+  49% {
+    left: 90px;
+    top: 95px;
+    transform: scaleX(-1);
+  }
+  50% {
+    left: 90px;
+    top: 95px;
+    transform: scaleX(1);
+  }
+  99% {
+    left: 780px;
+    top: 80px;
+    transform: scaleX(1);
+  }
+  100% {
+    left: 780px;
+    top: 80px;
+    transform: scaleX(-1);
+  }
+}
+
+/* ================= BONG BÓNG CHỈ DI CHUYỂN HƯỚNG LÊN TRÊN ================= */
+.bubble {
+  position: absolute;
+  bottom: -40px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 255, 255, 0.85),
+    rgba(255, 255, 255, 0.15)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  z-index: 25;
+  animation-name: BubbleUp;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+}
+
+.b1 {
+  left: 15%;
+  width: 16px;
+  height: 16px;
+  animation-duration: 7s;
+  animation-delay: 0s;
+}
+.b2 {
+  left: 32%;
+  width: 24px;
+  height: 24px;
+  animation-duration: 9s;
+  animation-delay: 2s;
+}
+.b3 {
+  left: 48%;
+  width: 12px;
+  height: 12px;
+  animation-duration: 6s;
+  animation-delay: 1s;
+}
+.b4 {
+  left: 65%;
+  width: 20px;
+  height: 20px;
+  animation-duration: 8s;
+  animation-delay: 3s;
+}
+.b5 {
+  left: 80%;
+  width: 14px;
+  height: 14px;
+  animation-duration: 6.5s;
+  animation-delay: 4s;
+}
+.b6 {
+  left: 90%;
+  width: 22px;
+  height: 22px;
+  animation-duration: 9.5s;
+  animation-delay: 1.5s;
+}
+
+@keyframes BubbleUp {
+  0% {
+    bottom: -40px;
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.85;
+  }
+  85% {
+    opacity: 0.85;
+  }
+  100% {
+    bottom: 105vh;
+    opacity: 0;
+  }
+}

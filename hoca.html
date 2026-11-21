@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hồ cá vui nhộn</title>
+    <link rel="stylesheet" href="hoca.css" />
+  </head>
+  <body>
+    <div id="content" class="bg-1">
+      <!-- Yêu cầu nâng cao: Nút điều khiển góc trên bên phải -->
+      <div class="controls">
+        <a class="ctrl-btn" href="../index.html">← Trang chủ</a>
+        <button type="button" class="ctrl-btn" onclick="doiCanhNen()">
+          Đổi cảnh nền (1/4)
+        </button>
+        <button
+          type="button"
+          class="ctrl-btn"
+          id="musicBtn"
+          onclick="batTatNhac()"
+        >
+          Bật nhạc
+        </button>
+      </div>
+
+      <!-- Cá mập theo đúng mẫu sách -->
+      <div id="shark">
+        <img src="image/shark.png" alt="Cá mập" />
+      </div>
+
+      <!-- Các đối tượng khác (Bước 5) -->
+      <div id="turtle">
+        <img src="image/turtle.png" alt="Con rùa" />
+      </div>
+
+      <div id="diver1">
+        <img src="image/diver1.png" alt="Thợ lặn 1" />
+      </div>
+
+      <div id="diver2">
+        <img src="image/diver2.png" alt="Thợ lặn 2" />
+      </div>
+
+      <div id="diver3">
+        <img src="image/diver3.png" alt="Thợ lặn 3" />
+      </div>
+
+      <div id="goldfish">
+        <img src="image/goldFishSchool.png" alt="Đàn cá vàng" />
+      </div>
+
+      <div id="faintschool">
+        <img src="image/faintSchool.png" alt="Đàn cá nhỏ" />
+      </div>
+
+      <!-- Bong bóng chỉ di chuyển hướng lên trên -->
+      <div class="bubble b1"></div>
+      <div class="bubble b2"></div>
+      <div class="bubble b3"></div>
+      <div class="bubble b4"></div>
+      <div class="bubble b5"></div>
+      <div class="bubble b6"></div>
+    </div>
+
+    <script>
+      // 1. Đổi qua lại 4 cảnh nền sau mỗi lần nhấn
+      let canhHienTai = 1;
+      const tongSoCanh = 4;
+
+      function doiCanhNen() {
+        const hoCa = document.getElementById("content");
+        hoCa.classList.remove("bg-" + canhHienTai);
+        canhHienTai = (canhHienTai % tongSoCanh) + 1;
+        hoCa.classList.add("bg-" + canhHienTai);
+        document.querySelector('button[onclick="doiCanhNen()"]').textContent =
+          "Đổi cảnh nền (" + canhHienTai + "/" + tongSoCanh + ")";
+      }
+
+      // 2. Phát nhạc hoặc ngừng phát nhạc (tạo giai điệu nhẹ trực tiếp bằng trình duyệt)
+      let audioCtx = null;
+      let dangPhatNhac = false;
+      let musicTimer = null;
+      const notNhac = [
+        261.63, 329.63, 392.0, 523.25, 392.0, 329.63, 293.66, 392.0,
+      ];
+      let viTriNot = 0;
+
+      function choiMotNot() {
+        if (!dangPhatNhac || !audioCtx) return;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = "sine";
+        osc.frequency.value = notNhac[viTriNot % notNhac.length];
+        viTriNot++;
+
+        gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(
+          0.0001,
+          audioCtx.currentTime + 0.55,
+        );
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.55);
+      }
+
+      function batTatNhac() {
+        const btn = document.getElementById("musicBtn");
+        if (!dangPhatNhac) {
+          if (!audioCtx) {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+          }
+          if (audioCtx.state === "suspended") {
+            audioCtx.resume();
+          }
+          dangPhatNhac = true;
+          btn.textContent = "Tắt nhạc";
+          choiMotNot();
+          musicTimer = setInterval(choiMotNot, 600);
+        } else {
+          dangPhatNhac = false;
+          btn.textContent = "Bật nhạc";
+          clearInterval(musicTimer);
+        }
+      }
+    </script>
+  </body>
+</html>
