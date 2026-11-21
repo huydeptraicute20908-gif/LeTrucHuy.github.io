@@ -1,0 +1,229 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #dbeafe;
+  color: #1e293b;
+  line-height: 1.5;
+  padding: 24px 16px 40px;
+}
+
+.nav-top {
+  max-width: 1000px;
+  margin: 0 auto 14px;
+}
+
+.nav-top a {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #0f172a;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+}
+
+.nav-top a:hover {
+  background-color: #0369a1;
+}
+
+/* Khung CV 2 cột thẳng đứng: 40% - 60% */
+.cv-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  min-height: 1120px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.14);
+}
+
+.left-col {
+  width: 40%;
+  background-color: #1e293b;
+  color: #f8fafc;
+  padding: 32px 24px;
+}
+
+.right-col {
+  width: 60%;
+  background-color: #ffffff;
+  padding: 36px 32px;
+}
+
+.avatar-wrap {
+  text-align: center;
+  padding-bottom: 22px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.avatar-circle {
+  width: 110px;
+  height: 110px;
+  margin: 0 auto 10px;
+  border-radius: 50%;
+  background-color: #0284c7;
+  color: #ffffff;
+  font-size: 60px;
+  line-height: 110px;
+  border: 3px solid #7dd3fc;
+}
+
+.avatar-label {
+  font-size: 13px;
+  color: #cbd5e1;
+}
+
+.section-box {
+  margin-bottom: 24px;
+}
+
+.left-title {
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  color: #38bdf8;
+  padding-bottom: 6px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.info-line {
+  font-size: 14px;
+  color: #e2e8f0;
+  margin-bottom: 8px;
+}
+
+.sym {
+  display: inline-block;
+  width: 22px;
+  color: #38bdf8;
+  font-weight: bold;
+}
+
+.skill-item {
+  margin-bottom: 12px;
+}
+
+.skill-name {
+  font-size: 13.5px;
+  color: #f1f5f9;
+  margin-bottom: 5px;
+}
+
+.skill-track {
+  width: 100%;
+  height: 8px;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.skill-bar {
+  height: 100%;
+  background-color: #38bdf8;
+  border-radius: 999px;
+}
+
+.w-85 {
+  width: 85%;
+}
+.w-80 {
+  width: 80%;
+}
+.w-70 {
+  width: 70%;
+}
+
+.sym-list {
+  list-style: none;
+  font-size: 14px;
+  color: #e2e8f0;
+}
+
+.sym-list li {
+  margin-bottom: 7px;
+}
+
+.ref-box {
+  margin-bottom: 14px;
+}
+
+.ref-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.ref-detail {
+  font-size: 13.5px;
+  color: #cbd5e1;
+}
+
+.profile-header {
+  padding-bottom: 20px;
+  margin-bottom: 24px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.full-name {
+  font-size: 32px;
+  color: #0f172a;
+}
+
+.job-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #0284c7;
+  margin: 6px 0 12px;
+}
+
+.summary {
+  font-size: 14px;
+  color: #475569;
+}
+
+.right-section {
+  margin-bottom: 24px;
+}
+
+.right-title {
+  font-size: 17px;
+  text-transform: uppercase;
+  color: #0f172a;
+  padding-left: 10px;
+  margin-bottom: 14px;
+  border-left: 4px solid #0284c7;
+}
+
+.item-card {
+  margin-bottom: 16px;
+}
+
+.item-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 14.5px;
+  color: #1e293b;
+  margin-bottom: 4px;
+}
+
+.item-head span {
+  font-size: 13px;
+  font-weight: 600;
+  color: #0284c7;
+  white-space: nowrap;
+}
+
+.item-card p {
+  font-size: 14px;
+  color: #475569;
+}
